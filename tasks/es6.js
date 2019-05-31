@@ -6,7 +6,7 @@ import environments from 'gulp-environments';
 const isDev = environments.development;
 const isProd = environments.production;
 
-const es6 = (src, dest, options = {}) => {
+const es6 = (src, dest, options = { babelOptions: {} }) => {
     return rollupJS(
         {
             input: glob.sync(src),
@@ -30,6 +30,7 @@ const es6 = (src, dest, options = {}) => {
                 ],
             ],
             plugins: [],
+            ...options.babelOptions,
         },
     );
 };

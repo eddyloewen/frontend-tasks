@@ -19,9 +19,9 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
         {
             input: 'src/main.js',
             plugins: [
+                babel(babelOptions),
                 resolve(),
                 commonjs(),
-                babel(babelOptions),
                 Config.versionManifest !== false && hash(Config.versionManifest),
                 isProd() &&
                     cleanup({

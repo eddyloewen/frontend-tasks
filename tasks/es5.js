@@ -7,7 +7,7 @@ import environments from 'gulp-environments';
 const isDev = environments.development;
 const isProd = environments.production;
 
-const es5 = (src, dest, options = {}) => {
+const es5 = (src, dest, options = { babelOptions: {} }) => {
     const promises = [];
 
     glob.sync(src).forEach(script => {
@@ -36,6 +36,7 @@ const es5 = (src, dest, options = {}) => {
                         ],
                     ],
                     plugins: [],
+                    ...options.babelOptions,
                 },
             ),
         );
