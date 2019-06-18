@@ -6,6 +6,7 @@ const defaultOptions = {
     name: 'hash-manifest.json',
     replace: false,
     versionPattern: '[name]?version=[hash]',
+    publicPath: '',
 };
 
 function md5(string) {
@@ -38,27 +39,35 @@ function generateVersionString(versionPattern, name, hash) {
     return versionPattern.replace('[name]', name).replace('[hash]', hash);
 }
 
+function writeHash(bundleName, bundleDir, bundleCode, options) {
+    // console.log('writeHash', bundleName, bundleDir);
+
+    const fileName = `${bundleDir}/${bundleName}`.replace(options.publicPath, '');
+
+    const manifest = tryRequire(options.name) || {};
+    manifest[`${fileName}`] = generateVersionString(options.versionPattern, fileName, md5(bundleCode));
+    mkdirpath(options.name);
+    fs.writeFileSync(options.name, JSON.stringify(manifest, null, 4), 'utf8');
+}
+
 export default function hash(options = {}) {
     options = Object.assign({}, defaultOptions, options);
 
     return {
         name: 'hash-version-manifest',
         generateBundle: function(outputOptions, bundle) {
-            // console.log('hash outputOptions', outputOptions);
-            // console.log('hash bundle', bundle);
-
-            const bundleName = bundle[Object.keys(bundle)[0]].fileName;
-            const bundleCode = bundle[Object.keys(bundle)[0]].code;
-
-            const fileName = `${outputOptions.dir}/${bundleName}`;
-
-            // console.log('hash bundleName', bundleName);
-            // console.log('hash fileName', fileName);
-
-            const manifest = tryRequire(options.name) || {};
-            manifest[`${fileName}`] = generateVersionString(options.versionPattern, fileName, md5(bundleCode));
-            mkdirpath(options.name);
-            fs.writeFileSync(options.name, JSON.stringify(manifest), 'utf8');
+            // writeHash(
+            //     bundle[Object.keys(bundle)[0]].fileName,
+            //     outputOptions.dir,
+            //     bundle[Object.keys(bundle)[0]].code,
+            //     options,
+            // );
+        },
+        renderChunk: function(code, chunk, outputOptions) {
+            writeHash(chunk.fileName, outputOptions.dir, code, options);
+        },
+        writeBundle: function(bundle) {
+            // console.log('writeBundle', bundle);
         },
     };
 }

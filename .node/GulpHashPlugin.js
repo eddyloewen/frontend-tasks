@@ -7,6 +7,7 @@ const defaultOptions = {
     name: 'hash-manifest.json',
     replace: false,
     versionPattern: '[name]?version=[hash]',
+    publicPath: '',
 };
 
 function md5(string) {
@@ -45,13 +46,13 @@ export default function(options) {
     return through.obj((chunk, enc, cb) => {
         // console.log('through chunk', chunk.contents, chunk.path, chunk.cwd, chunk.base);
 
-        const fileName = chunk.path.replace(chunk.cwd + '/', '');
+        const fileName = chunk.path.replace(chunk.cwd + '/', '').replace(options.publicPath, '');
 
         if (fileName.indexOf('.map') === -1) {
             const manifest = tryRequire(options.name) || {};
             manifest[`${fileName}`] = generateVersionString(options.versionPattern, fileName, md5(chunk.contents));
             mkdirpath(options.name);
-            fs.writeFileSync(options.name, JSON.stringify(manifest), 'utf8');
+            fs.writeFileSync(options.name, JSON.stringify(manifest, null, 4), 'utf8');
         }
 
         cb(null, chunk);
