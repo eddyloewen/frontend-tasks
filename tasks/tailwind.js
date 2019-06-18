@@ -19,27 +19,14 @@ const isProd = environments.production;
 
 import Config from '../config';
 
-// Custom PurgeCSS extractor for Tailwind that allows special characters in class names.
-// https://github.com/FullHuman/purgecss#extractor
-class TailwindExtractor {
-    static extract(content) {
-        return content.match(/[A-Za-z0-9-_:\/]+/g) || [];
-    }
-}
-
 const defaultOptions = {
     autoprefixer: {
         browsers: ['last 2 versions', 'IE 11'],
         grid: true,
     },
-    purgecss: {
+    purgeCss: {
         content: ['**/*.html'],
-        extractors: [
-            {
-                extractor: TailwindExtractor,
-                extensions: ['html', 'js', 'ftl', 'yaml', 'hbs'],
-            },
-        ],
+        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     },
     cssnano: {
         preset: 'default',
