@@ -15,13 +15,4 @@ module.exports = [
             format: 'es',
         },
     },
-    {
-        input: 'index.js',
-        output: {
-            interop: false,
-            file: 'dist/umd/index.js',
-            format: 'umd',
-            name: 'GulpMix',
-        },
-    },
 ];

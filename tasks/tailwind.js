@@ -21,7 +21,6 @@ import Config from '../config';
 
 const defaultOptions = {
     autoprefixer: {
-        browsers: ['last 2 versions', 'IE 11'],
         grid: true,
     },
     purgeCss: {

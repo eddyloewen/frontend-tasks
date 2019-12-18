@@ -1,6 +1,6 @@
 {
   "name": "frontend-tasks",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Frontend Tasks is a wrapper around gulp for most of the normal use cases for simple and modern frontend development",
   "keywords": [
     "frontend tasks",
@@ -14,12 +14,12 @@
   "repository": "git@github.com:eddyloewen/frontend-tasks.git",
   "author": "Eddy Löwen <mail@eddyloewen.com>",
   "license": "MIT",
-  "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/es/index.js",
   "files": [
     "dist/cjs/*",
-    "dist/es/*"
+    "dist/es/*",
+    "tasks/*"
   ],
   "dependencies": {
     "@babel/core": "^7.4.4",
@@ -53,6 +53,7 @@
     "postcss-import": "^12.0.1",
     "postcss-nested": "^4.1.2",
     "prettier": "^1.17.1",
+    "readable-stream": "^3.4.0",
     "rollup": "^1.12.3",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-babel-minify": "^8.0.0",
