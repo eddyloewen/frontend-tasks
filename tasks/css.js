@@ -57,8 +57,10 @@ const cssTask = (src, dest, options = {}) => {
 };
 
 const css = (src, dest, options = {}) => {
-    const css = () => cssTask(src, dest, options);
-    return isDev() ? watchCSS(src, css) : cssTask(src, dest, options);
+    return () => {
+        const css = () => cssTask(src, dest, options);
+        return isDev() ? watchCSS(src, css) : cssTask(src, dest, options);
+    };
 };
 css.description = `concatenate and compile styles using stylus before autoprefixing and minifying`;
 

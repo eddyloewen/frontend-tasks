@@ -1,7 +1,9 @@
 const del = require('del');
 
 const clean = directories => {
-    return del(directories);
+    return () => {
+        return del(directories);
+    };
 };
 clean.description = `cleans the given directories`;
 

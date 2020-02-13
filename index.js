@@ -20,14 +20,7 @@ const options = (options = {}) => {
     Object.assign(Config, options);
 };
 
-// TODO: check for async task (https://github.com/gulpjs/gulp/blob/master/docs/getting-started/4-async-completion.md)
-const register = (mix, name, task) => {
-    mix[name] = task.bind();
-};
-
 const tasks = {
-    register,
-    options,
     clean,
     copy,
     svg,
@@ -43,7 +36,7 @@ const tasks = {
     watchJS,
 };
 
-export default tasks;
+export { tasks, options };
 
 // API
 // tasks.js(src, destination);
@@ -58,4 +51,3 @@ export default tasks;
 //     showNotifications: true,
 //     generateVersionManifest: false,
 // });
-// tasks.register(mix, 'name', () => new Promise(resolve => {}));

@@ -4,20 +4,22 @@ import notify from 'gulp-notify';
 import Config from '../config';
 
 const watchJS = (src, tasks) => {
-    gulp.watch(src, tasks)
-        .on('change', function() {
-            if (Config.showNotifications) {
-                notify({ title: Config.projectTitle, message: 'JS changed' }).write('');
-            }
-        })
-        .on('error', function(error) {
-            if (Config.showNotifications) {
-                notify.onError({
-                    title: Config.projectTitle,
-                    message: 'ESLintError: ' + error.message,
-                });
-            }
-        });
+    return () => {
+        gulp.watch(src, tasks)
+            .on('change', function() {
+                if (Config.showNotifications) {
+                    notify({ title: Config.projectTitle, message: 'JS changed' }).write('');
+                }
+            })
+            .on('error', function(error) {
+                if (Config.showNotifications) {
+                    notify.onError({
+                        title: Config.projectTitle,
+                        message: 'ESLintError: ' + error.message,
+                    });
+                }
+            });
+    };
 };
 watchJS.description = `watch for scripts changes and lint then compile on change`;
 

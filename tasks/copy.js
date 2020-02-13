@@ -10,13 +10,15 @@ const copyTask = (src, dest) => {
 };
 
 const copy = paths => {
-    const streams = [];
+    return () => {
+        const streams = [];
 
-    paths.forEach(path => {
-        streams.push(copyTask(path.src, path.dest));
-    });
+        paths.forEach(path => {
+            streams.push(copyTask(path.src, path.dest));
+        });
 
-    return merge(streams);
+        return merge(streams);
+    };
 };
 copy.description = `copies files from src to dest`;
 

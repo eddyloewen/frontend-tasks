@@ -10,11 +10,13 @@ const svgTask = (src, dest) => {
 };
 
 const svg = paths => {
-    const streams = paths.map(path => {
-        return svgTask(path.src, path.dest);
-    });
+    return () => {
+        const streams = paths.map(path => {
+            return svgTask(path.src, path.dest);
+        });
 
-    return merge(streams);
+        return merge(streams);
+    };
 };
 svg.description = `generates an svg sprite from all *.svg files in src and saves it in dest`;
 
