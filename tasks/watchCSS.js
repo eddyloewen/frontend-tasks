@@ -3,9 +3,9 @@ import notify from 'gulp-notify';
 
 import Config from '../config';
 
-const watchCSS = (src, tasks) => {
+const watchCSS = options => {
     return () => {
-        gulp.watch(src, { ignoreInitial: false }, tasks).on('change', function() {
+        gulp.watch(options.src, { ignoreInitial: false }, options.tasks).on('change', function() {
             if (Config.showNotifications) {
                 notify({ title: Config.projectTitle, message: 'CSS changed' }).write('');
             }

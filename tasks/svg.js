@@ -9,9 +9,9 @@ const svgTask = (src, dest) => {
         .pipe(gulp.dest(dest));
 };
 
-const svg = paths => {
+const svg = options => {
     return () => {
-        const streams = paths.map(path => {
+        const streams = options.paths.map(path => {
             return svgTask(path.src, path.dest);
         });
 

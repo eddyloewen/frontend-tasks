@@ -7,18 +7,18 @@ import environments from 'gulp-environments';
 const isDev = environments.development;
 const isProd = environments.production;
 
-const es5 = (src, dest, options = { babelOptions: {} }) => {
+const es5 = (options = { babelOptions: {} }) => {
     return () => {
         const promises = [];
 
-        glob.sync(src).forEach(script => {
+        glob.sync(options.src).forEach(script => {
             promises.push(
                 rollupJS(
                     {
                         input: script,
                     },
                     {
-                        dir: dest,
+                        dir: options.dest,
                         name: path.basename(script).replace('.js', ''),
                         entryFileNames: '[name].js',
                         format: 'iife',

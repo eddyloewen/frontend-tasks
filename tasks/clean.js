@@ -1,8 +1,8 @@
 const del = require('del');
 
-const clean = directories => {
+const clean = options => {
     return () => {
-        return del(directories);
+        return del(options.directories);
     };
 };
 clean.description = `cleans the given directories`;

@@ -56,10 +56,10 @@ const cssTask = (src, dest, options = {}) => {
         .pipe(gulpIf(Config.versionManifest !== false, hash(Config.versionManifest)));
 };
 
-const css = (src, dest, options = {}) => {
+const css = (options = {}) => {
     return () => {
-        const css = () => cssTask(src, dest, options);
-        return isDev() ? watchCSS(src, css) : cssTask(src, dest, options);
+        const css = () => cssTask(options.src, options.dest, options);
+        return isDev() ? watchCSS(options.src, css) : cssTask(options.src, options.dest, options);
     };
 };
 css.description = `concatenate and compile styles using stylus before autoprefixing and minifying`;

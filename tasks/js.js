@@ -2,11 +2,11 @@ const path = require('path');
 import es6 from './es6.js';
 import es5 from './es5.js';
 
-const js = (src, dest, options = { js: {}, es5: {}, es6: {} }) => {
+const js = (options = { js: {}, es5: {}, es6: {} }) => {
     return () => {
         const bundlePromises = [
-            es6(src, path.join(dest, 'module'), { ...options.js, ...options.es6 }),
-            es5(src, path.join(dest, 'nomodule'), { ...options.js, ...options.es5 }),
+            es6(options.src, path.join(options.dest, 'module'), { ...options.js, ...options.es6 }),
+            es5(options.src, path.join(options.dest, 'nomodule'), { ...options.js, ...options.es5 }),
         ];
         return Promise.all(bundlePromises);
     };

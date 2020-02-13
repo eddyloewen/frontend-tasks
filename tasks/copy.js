@@ -9,11 +9,11 @@ const copyTask = (src, dest) => {
         .pipe(gulp.dest(dest));
 };
 
-const copy = paths => {
+const copy = options => {
     return () => {
         const streams = [];
 
-        paths.forEach(path => {
+        options.paths.forEach(path => {
             streams.push(copyTask(path.src, path.dest));
         });
 

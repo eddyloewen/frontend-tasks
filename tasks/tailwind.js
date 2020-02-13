@@ -32,11 +32,11 @@ const defaultOptions = {
     },
 };
 
-const tailwind = (src, dest, configPath, options = {}) => {
+const tailwind = (options = {}) => {
     return () => {
         options = Object.assign(defaultOptions, options);
         return gulp
-            .src(src)
+            .src(options.src)
             .pipe(
                 plumber({
                     errorHandler: error => {
@@ -54,7 +54,7 @@ const tailwind = (src, dest, configPath, options = {}) => {
             .pipe(
                 postcss([
                     postcssImport(),
-                    tailwindcss(configPath),
+                    tailwindcss(options.configPath),
                     postcssNested(),
                     options.autoprefixer && autoprefixer(options.autoprefixer),
                 ]),
@@ -62,7 +62,7 @@ const tailwind = (src, dest, configPath, options = {}) => {
             .pipe(gulpIf(isProd() && options.purgeCss, purgecss(options.purgeCss)))
             .pipe(isProd(postcss([options.cssnano && cssnano(options.cssnano)])))
             .pipe(isDev(sourcemaps.write('.')))
-            .pipe(gulp.dest(dest))
+            .pipe(gulp.dest(options.dest))
             .pipe(gulpIf(Config.versionManifest !== false, hash(Config.versionManifest)));
     };
 };

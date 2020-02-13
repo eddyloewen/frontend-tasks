@@ -12,10 +12,10 @@ const isProd = environments.production;
 
 import Config from '../config';
 
-const postCSS = (src, dest, plugins) => {
+const postCSS = options => {
     return () => {
         return gulp
-            .src(src)
+            .src(options.src)
             .pipe(
                 plumber({
                     errorHandler: error => {
@@ -30,9 +30,9 @@ const postCSS = (src, dest, plugins) => {
                 }),
             )
             .pipe(sourcemaps.init())
-            .pipe(postcss(plugins))
+            .pipe(postcss(options.plugins))
             .pipe(isDev(sourcemaps.write('.')))
-            .pipe(gulp.dest(dest))
+            .pipe(gulp.dest(options.dest))
             .pipe(gulpIf(Config.versionManifest !== false, hash(Config.versionManifest)));
     };
 };

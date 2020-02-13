@@ -6,14 +6,14 @@ import environments from 'gulp-environments';
 const isDev = environments.development;
 const isProd = environments.production;
 
-const es6 = (src, dest, options = { babelOptions: {} }) => {
+const es6 = (options = { babelOptions: {} }) => {
     return () => {
         return rollupJS(
             {
-                input: glob.sync(src),
+                input: glob.sync(options.src),
             },
             {
-                dir: dest,
+                dir: options.dest,
                 entryFileNames: '[name].js',
                 format: 'es',
                 sourcemap: !!isDev(),
