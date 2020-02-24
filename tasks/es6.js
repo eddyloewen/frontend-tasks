@@ -19,18 +19,7 @@ const es6 = (options = { babelOptions: {} }) => {
                 sourcemap: !!isDev(),
             },
             {
-                babelrc: false,
-                presets: [
-                    [
-                        '@babel/preset-env',
-                        {
-                            targets: {
-                                browsers: ['Chrome >= 61', 'Safari >= 11', 'iOS >= 11', 'Firefox >= 60', 'Edge >= 16'],
-                            },
-                        },
-                    ],
-                ],
-                plugins: [],
+                babelrc: true,
                 ...options.babelOptions,
             },
         );
