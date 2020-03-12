@@ -20,7 +20,7 @@ import watchCSS from './watchCSS';
 
 const defaultOptions = {
     autoprefixer: {
-        grid: true,
+        grid: false,
     },
     purgecss: {
         content: ['**/*.html'],

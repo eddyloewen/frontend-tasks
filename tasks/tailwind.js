@@ -21,7 +21,7 @@ import Config from '../config';
 
 const defaultOptions = {
     autoprefixer: {
-        grid: true,
+        grid: false,
     },
     purgeCss: {
         content: ['**/*.html'],
