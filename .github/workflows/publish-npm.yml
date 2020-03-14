@@ -4,9 +4,7 @@
 name: Publish NPM
 
 on:
-  release:
-    branches: [master]
-    types: [published]
+  push:
     tags:
       - v*
 
