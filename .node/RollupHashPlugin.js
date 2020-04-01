@@ -10,10 +10,7 @@ const defaultOptions = {
 };
 
 function md5(string) {
-    return crypto
-        .createHash('md5')
-        .update(string)
-        .digest('hex');
+    return crypto.createHash('md5').update(string).digest('hex');
 }
 
 function tryRequire(file) {
@@ -55,7 +52,7 @@ export default function hash(options = {}) {
 
     return {
         name: 'hash-version-manifest',
-        generateBundle: function(outputOptions, bundle) {
+        generateBundle: function (outputOptions, bundle) {
             // writeHash(
             //     bundle[Object.keys(bundle)[0]].fileName,
             //     outputOptions.dir,
@@ -63,10 +60,10 @@ export default function hash(options = {}) {
             //     options,
             // );
         },
-        renderChunk: function(code, chunk, outputOptions) {
+        renderChunk: function (code, chunk, outputOptions) {
             writeHash(chunk.fileName, outputOptions.dir, code, options);
         },
-        writeBundle: function(bundle) {
+        writeBundle: function (bundle) {
             // console.log('writeBundle', bundle);
         },
     };

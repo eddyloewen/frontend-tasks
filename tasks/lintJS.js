@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import eslint from 'gulp-eslint';
 
-const lintJS = options => {
+const lintJS = (options) => {
     return () => {
         return gulp
             .src(options.src)

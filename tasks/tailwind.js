@@ -25,7 +25,7 @@ const defaultOptions = {
     },
     purgeCss: {
         content: ['**/*.html'],
-        defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || [],
+        defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     },
     cssnano: {
         preset: 'default',
@@ -39,7 +39,7 @@ const tailwind = (options = {}) => {
             .src(options.src)
             .pipe(
                 plumber({
-                    errorHandler: error => {
+                    errorHandler: (error) => {
                         if (Config.showNotifications) {
                             notify.onError({
                                 title: Config.projectTitle + ' - Tailwind CSS Error',

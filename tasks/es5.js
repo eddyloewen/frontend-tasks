@@ -11,7 +11,7 @@ const es5 = (options = { babelOptions: {} }) => {
     return () => {
         const promises = [];
 
-        glob.sync(options.src).forEach(script => {
+        glob.sync(options.src).forEach((script) => {
             promises.push(
                 rollupJS(
                     {

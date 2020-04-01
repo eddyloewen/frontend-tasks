@@ -11,10 +11,7 @@ const defaultOptions = {
 };
 
 function md5(string) {
-    return crypto
-        .createHash('md5')
-        .update(string)
-        .digest('hex');
+    return crypto.createHash('md5').update(string).digest('hex');
 }
 
 function tryRequire(file) {
@@ -40,7 +37,7 @@ function generateVersionString(versionPattern, name, hash) {
     return versionPattern.replace('[name]', name).replace('[hash]', hash);
 }
 
-export default function(options) {
+export default function (options) {
     options = Object.assign({}, defaultOptions, options);
 
     return through.obj((chunk, enc, cb) => {

@@ -3,15 +3,15 @@ import notify from 'gulp-notify';
 
 import Config from '../config';
 
-const watchJS = options => {
+const watchJS = (options) => {
     return () => {
         gulp.watch(options.src, options.tasks)
-            .on('change', function() {
+            .on('change', function () {
                 if (Config.showNotifications) {
                     notify({ title: Config.projectTitle, message: 'JS changed' }).write('');
                 }
             })
-            .on('error', function(error) {
+            .on('error', function (error) {
                 if (Config.showNotifications) {
                     notify.onError({
                         title: Config.projectTitle,

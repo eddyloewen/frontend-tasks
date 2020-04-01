@@ -36,7 +36,7 @@ const cssTask = (src, dest, options = {}) => {
         .src(src)
         .pipe(
             plumber({
-                errorHandler: error => {
+                errorHandler: (error) => {
                     if (Config.showNotifications) {
                         notify.onError({
                             title: Config.projectTitle + ' - CSS Error',

@@ -3,17 +3,14 @@ import flatten from 'gulp-flatten';
 import merge from 'merge-stream';
 
 const copyTask = (src, dest) => {
-    return gulp
-        .src(src)
-        .pipe(flatten())
-        .pipe(gulp.dest(dest));
+    return gulp.src(src).pipe(flatten()).pipe(gulp.dest(dest));
 };
 
-const copy = options => {
+const copy = (options) => {
     return () => {
         const streams = [];
 
-        options.paths.forEach(path => {
+        options.paths.forEach((path) => {
             streams.push(copyTask(path.src, path.dest));
         });
 

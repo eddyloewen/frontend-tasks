@@ -43,7 +43,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
     );
 
     if (isDev() && outputOptions['format'] === 'es') {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             const watcher = watch({
                 ...inputOptions,
                 output: [outputOptions],
@@ -51,7 +51,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
                     clearScreen: true,
                 },
             });
-            watcher.on('event', event => {
+            watcher.on('event', (event) => {
                 if (!Config.showNotifications) return;
                 if (event.code === 'START') {
                     notify({ title: Config.projectTitle, message: 'Starting "es6"...' }).write('');

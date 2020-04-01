@@ -12,13 +12,13 @@ const isProd = environments.production;
 
 import Config from '../config';
 
-const postCSS = options => {
+const postCSS = (options) => {
     return () => {
         return gulp
             .src(options.src)
             .pipe(
                 plumber({
-                    errorHandler: error => {
+                    errorHandler: (error) => {
                         if (Config.showNotifications) {
                             notify.onError({
                                 title: Config.projectTitle + ' - PostCSS Error',
