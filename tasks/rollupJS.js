@@ -5,6 +5,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import minify from 'rollup-plugin-babel-minify';
 import cleanup from 'rollup-plugin-cleanup';
+import postcss from 'rollup-plugin-postcss';
 import commonjs from 'rollup-plugin-commonjs';
 import hash from '../.node/RollupHashPlugin';
 const notify = require('gulp-notify');
@@ -21,6 +22,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
             plugins: [
                 babel(babelOptions),
                 resolve(),
+                postcss(),
                 commonjs(),
                 Config.versionManifest !== false && hash(Config.versionManifest),
                 isProd() &&

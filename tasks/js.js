@@ -1,16 +1,29 @@
-const path = require('path');
-import es6 from './es6.js';
-import es5 from './es5.js';
+const glob = require('glob-all');
+import rollupJS from './rollupJS.js';
 
-const js = (options = { js: {}, es5: {}, es6: {} }) => {
+import environments from 'gulp-environments';
+
+const isDev = environments.development;
+const isProd = environments.production;
+
+const js = (options = { babelOptions: {} }) => {
     return () => {
-        const bundlePromises = [
-            es6(options.src, path.join(options.dest, 'module'), { ...options.js, ...options.es6 }),
-            es5(options.src, path.join(options.dest, 'nomodule'), { ...options.js, ...options.es5 }),
-        ];
-        return Promise.all(bundlePromises);
+        return rollupJS(
+            {
+                input: glob.sync(options.src),
+            },
+            {
+                dir: options.dest,
+                entryFileNames: '[name].js',
+                format: 'es',
+                sourcemap: !!isDev(),
+            },
+            {
+                babelrc: true,
+                ...options.babelOptions,
+            },
+        );
     };
 };
-js.description = `compile scripts using rollup to generate es6 and es5 bundles`;
 
 export default js;
