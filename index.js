@@ -1,12 +1,11 @@
+import browserSync from './tasks/browserSync';
 import clean from './tasks/clean';
 import copy from './tasks/copy';
-import svg from './tasks/svg';
-
 import css from './tasks/css';
-import lintCSS from './tasks/lintCSS';
-
 import js from './tasks/js';
+import lintCSS from './tasks/lintCSS';
 import lintJS from './tasks/lintJS';
+import svg from './tasks/svg';
 import watch from './tasks/watch';
 
 import Config from './config';
@@ -16,6 +15,7 @@ const options = (options = {}) => {
 };
 
 const tasks = {
+    browserSync,
     clean,
     copy,
     css,
@@ -29,12 +29,13 @@ const tasks = {
 export { tasks, options };
 
 // API
-// tasks.js(src, destination);
-// tasks.css(src, destination);
-// tasks.browserSync(options);
-// tasks.svg(icons, destination);
-// tasks.copy(src, destination);
-// tasks.options({
+// tasks.clean({ directories: [] });
+// tasks.copy({ paths: [] });
+// tasks.js({ src, destination });
+// tasks.css({ src, destination });
+// tasks.svg({ paths: [] });
+// tasks.browserSync({ files: [] });
+// options({
 //     projectTitle: 'frontend-tasks',
 //     showNotifications: true,
 //     generateVersionManifest: false,
