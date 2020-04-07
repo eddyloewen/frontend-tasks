@@ -27,7 +27,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
                 Config.versionManifest !== false && hash(Config.versionManifest),
                 isProd() &&
                     cleanup({
-                        comments: ['eslint', /^\*-/],
+                        comments: ['some'],
                     }),
                 isProd() && minify(),
             ],
