@@ -25,10 +25,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
                 postcss(),
                 commonjs(),
                 Config.versionManifest !== false && hash(Config.versionManifest),
-                isProd() &&
-                    cleanup({
-                        comments: ['some'],
-                    }),
+                isProd() && cleanup({}),
                 isProd() && minify(),
             ],
         },
