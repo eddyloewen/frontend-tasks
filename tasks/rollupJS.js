@@ -1,5 +1,4 @@
 import environments from 'gulp-environments';
-import eslint from 'gulp-eslint';
 import { rollup, watch } from 'rollup';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';

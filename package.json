@@ -1,6 +1,6 @@
 {
   "name": "frontend-tasks",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "Frontend Tasks is a wrapper around gulp for most of the normal use cases for simple and modern frontend development",
   "keywords": [
     "frontend tasks",
@@ -30,6 +30,7 @@
     "@babel/register": "^7.8.3",
     "@fullhuman/postcss-purgecss": "^2.1.0",
     "autoprefixer": "^9.7.4",
+    "babel-plugin-module-resolver": "^4.0.0",
     "browser-sync": "^2.26.7",
     "cross-env": "^7.0.0",
     "cssnano": "^4.1.10",
