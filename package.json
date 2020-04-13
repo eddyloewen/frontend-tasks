@@ -1,6 +1,6 @@
 {
   "name": "frontend-tasks",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "Frontend Tasks is a wrapper around gulp for most of the normal use cases for simple and modern frontend development",
   "keywords": [
     "frontend tasks",
@@ -63,11 +63,11 @@
     "readable-stream": "^3.6.0",
     "rollup": "^2.0.5",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-babel-minify": "^9.1.1",
     "rollup-plugin-cleanup": "^3.1.1",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-postcss": "^2.5.0",
+    "rollup-plugin-terser": "^5.3.0",
     "stylelint": "^13.2.0",
     "stylelint-config-standard": "^20.0.0",
     "tailwindcss": "^1.2.0",

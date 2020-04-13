@@ -2,7 +2,7 @@ import environments from 'gulp-environments';
 import { rollup, watch } from 'rollup';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
-import minify from 'rollup-plugin-babel-minify';
+import { terser } from 'rollup-plugin-terser';
 import cleanup from 'rollup-plugin-cleanup';
 import postcss from 'rollup-plugin-postcss';
 import commonjs from 'rollup-plugin-commonjs';
@@ -25,7 +25,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
                 commonjs(),
                 Config.versionManifest !== false && hash(Config.versionManifest),
                 isProd() && cleanup({}),
-                isProd() && minify(),
+                isProd() && terser(),
             ],
         },
         inputOptions,
