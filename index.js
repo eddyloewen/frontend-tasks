@@ -5,6 +5,7 @@ import css from './tasks/css';
 import js from './tasks/js';
 import lintCSS from './tasks/lintCSS';
 import lintJS from './tasks/lintJS';
+import run from './tasks/run';
 import svg from './tasks/svg';
 import watch from './tasks/watch';
 
@@ -22,6 +23,7 @@ const tasks = {
     js,
     lintCSS,
     lintJS,
+    run,
     svg,
     watch,
 };
@@ -33,6 +35,7 @@ export { tasks, options };
 // tasks.copy({ paths: [] });
 // tasks.js({ src, destination });
 // tasks.css({ src, destination });
+// tasks.run({ cmd: 'ls', args: ['-la'] });
 // tasks.svg({ paths: [] });
 // tasks.browserSync({ files: [] });
 // options({
