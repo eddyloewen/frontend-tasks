@@ -14,7 +14,7 @@ const css = (options = {}) => {
             .src(options.src)
             .pipe(
                 plumber({
-                    errorHandler: (error) => {
+                    errorHandler: function (error) {
                         if (Config.showNotifications) {
                             notify.onError({
                                 title: Config.projectTitle + ' - CSS Error',
