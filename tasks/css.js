@@ -9,28 +9,28 @@ import hash from '../.node/GulpHashPlugin';
 import Config from '../config';
 
 const css = (options = {}) => {
-    return () => {
-        return gulp
-            .src(options.src)
-            .pipe(
-                plumber({
-                    errorHandler: function (error) {
-                        if (Config.showNotifications) {
-                            notify.onError({
-                                title: Config.projectTitle + ' - CSS Error',
-                                message: error.toString(),
-                            })(error);
-                        }
-                        this.emit('end');
-                    },
-                }),
-            )
-            .pipe(sourcemaps.init())
-            .pipe(postcss())
-            .pipe(sourcemaps.write('.'))
-            .pipe(gulp.dest(options.dest))
-            .pipe(gulpIf(Config.versionManifest !== false, hash(Config.versionManifest)));
-    };
+	return () => {
+		return gulp
+			.src(options.src)
+			.pipe(
+				plumber({
+					errorHandler: function (error) {
+						if (Config.showNotifications) {
+							notify.onError({
+								title: Config.projectTitle + ' - CSS Error',
+								message: error.toString(),
+							})(error);
+						}
+						this.emit('end');
+					},
+				}),
+			)
+			.pipe(sourcemaps.init())
+			.pipe(postcss())
+			.pipe(sourcemaps.write('.'))
+			.pipe(gulp.dest(options.dest))
+			.pipe(gulpIf(Config.versionManifest !== false, hash(Config.versionManifest)));
+	};
 };
 
 export default css;

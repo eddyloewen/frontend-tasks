@@ -3,9 +3,9 @@ import stylelint from 'stylelint';
 import postcss from 'gulp-postcss';
 
 const lintCSS = (options) => {
-    return () => {
-        return gulp.src(options.src).pipe(postcss([stylelint]));
-    };
+	return () => {
+		return gulp.src(options.src).pipe(postcss([stylelint]));
+	};
 };
 lintCSS.description = `lint styles using stylelint`;
 

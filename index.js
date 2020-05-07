@@ -12,20 +12,20 @@ import watch from './tasks/watch';
 import Config from './config';
 
 const options = (options = {}) => {
-    Object.assign(Config, options);
+	Object.assign(Config, options);
 };
 
 const tasks = {
-    browserSync,
-    clean,
-    copy,
-    css,
-    js,
-    lintCSS,
-    lintJS,
-    run,
-    svg,
-    watch,
+	browserSync,
+	clean,
+	copy,
+	css,
+	js,
+	lintCSS,
+	lintJS,
+	run,
+	svg,
+	watch,
 };
 
 export { tasks, options };
