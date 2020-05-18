@@ -6,7 +6,7 @@ import environments from 'gulp-environments';
 const isDev = environments.development;
 const isProd = environments.production;
 
-const js = (options = { babelOptions: {} }) => {
+const js = (options = { outputOptions: {}, babelOptions: {} }) => {
 	return () => {
 		return rollupJS(
 			{
@@ -17,6 +17,7 @@ const js = (options = { babelOptions: {} }) => {
 				entryFileNames: '[name].js',
 				format: 'es',
 				sourcemap: !!isDev(),
+				...options.outputOptions,
 			},
 			{
 				babelrc: true,
