@@ -1,4 +1,4 @@
-const del = require('del');
+import del from 'del';
 
 const clean = (options) => {
 	return () => {

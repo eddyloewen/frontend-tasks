@@ -1,5 +1,6 @@
-const spawn = require('child_process').spawn;
-const log = require('fancy-log');
+import childProcess from 'child_process';
+const spawn = childProcess.spawn;
+import log from 'fancy-log';
 
 const run = (options) => {
 	return (cb) => {

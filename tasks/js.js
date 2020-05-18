@@ -1,4 +1,4 @@
-const glob = require('glob-all');
+import glob from 'glob-all';
 import rollupJS from './rollupJS.js';
 
 import environments from 'gulp-environments';

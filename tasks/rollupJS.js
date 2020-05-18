@@ -7,7 +7,7 @@ import cleanup from 'rollup-plugin-cleanup';
 import postcss from 'rollup-plugin-postcss';
 import commonjs from 'rollup-plugin-commonjs';
 import hash from '../.node/RollupHashPlugin';
-const notify = require('gulp-notify');
+import notify from 'gulp-notify';
 
 const isDev = environments.development;
 const isProd = environments.production;

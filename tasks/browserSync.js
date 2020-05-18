@@ -1,4 +1,5 @@
-const browserSyncInstance = require('browser-sync').create();
+import browserSyncModule from 'browser-sync';
+const browserSyncInstance = browserSyncModule.create();
 
 const browserSync = (options) => {
 	return () => {
