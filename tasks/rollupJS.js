@@ -35,7 +35,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
 			dir: 'public',
 			entryFileNames: '[name].js',
 			format: 'es',
-			sourcemap: !!isDev(),
+			sourcemap: true,
 		},
 		outputOptions,
 	);
