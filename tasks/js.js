@@ -16,7 +16,7 @@ const js = (options = { outputOptions: {}, babelOptions: {} }) => {
 				dir: options.dest,
 				entryFileNames: '[name].js',
 				format: 'es',
-				sourcemap: !!isDev(),
+				sourcemap: true,
 				...options.outputOptions,
 			},
 			{

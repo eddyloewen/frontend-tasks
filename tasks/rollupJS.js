@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser';
 import cleanup from 'rollup-plugin-cleanup';
 import postcss from 'rollup-plugin-postcss';
 import commonjs from 'rollup-plugin-commonjs';
+import gzipPlugin from 'rollup-plugin-gzip';
 import hash from '../.node/RollupHashPlugin';
 import notify from 'gulp-notify';
 
@@ -26,6 +27,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
 				Config.versionManifest !== false && hash(Config.versionManifest),
 				isProd() && cleanup({}),
 				isProd() && terser(),
+				isProd() && gzipPlugin(),
 			],
 		},
 		inputOptions,

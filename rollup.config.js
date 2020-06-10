@@ -1,3 +1,6 @@
+const resolve = require('rollup-plugin-node-resolve');
+const commonjs = require('rollup-plugin-commonjs');
+
 const externals = [
 	'gulp',
 	'stylelint',
@@ -27,12 +30,15 @@ const externals = [
 	'rollup-plugin-cleanup',
 	'rollup-plugin-postcss',
 	'rollup-plugin-commonjs',
+	'zlib',
+	'util',
 ];
 
 module.exports = [
 	{
 		input: 'index.js',
 		external: externals,
+		plugins: [resolve(), commonjs()],
 		output: {
 			interop: false,
 			file: 'dist/cjs/index.js',
@@ -42,6 +48,7 @@ module.exports = [
 	{
 		input: 'index.js',
 		external: externals,
+		plugins: [resolve(), commonjs()],
 		output: {
 			interop: false,
 			file: 'dist/es/index.js',
