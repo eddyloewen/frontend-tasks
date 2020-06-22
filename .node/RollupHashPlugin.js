@@ -8,11 +8,10 @@ export default function hash(options = {}) {
 	return {
 		name: 'hash-version-manifest',
 		renderChunk: function (code, chunk, outputOptions) {
-			console.log('renderChunk', { chunk, name: chunk.name, outputOptions });
 			const filePath = options.formatter(outputOptions.dir.split(path.sep).join('/'));
 
 			// if outputOptions.entryFileNames contains [hash] we need to extract it from the path for the key in the manifest
-			const fileExtension = chunk.fileName.split('.')[1];
+			const fileExtension = chunk.fileName.split('.').pop();
 			const keyFileName = `${filePath}${chunk.name}.${fileExtension}`;
 			const valueFileName = `${filePath}${chunk.fileName}`;
 
