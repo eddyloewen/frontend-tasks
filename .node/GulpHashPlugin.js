@@ -12,7 +12,7 @@ export default function (options = {}) {
 			const fileName = options.formatter(chunkPath.split(path.sep).join('/'));
 			const code = chunk.contents;
 
-			addToManifest(fileName, code, options);
+			addToManifest(fileName, fileName, code, options);
 		}
 
 		cb(null, chunk);
