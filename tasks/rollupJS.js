@@ -5,6 +5,7 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import cleanup from 'rollup-plugin-cleanup';
 import postcss from 'rollup-plugin-postcss';
+import svg from 'rollup-plugin-svg';
 import commonjs from 'rollup-plugin-commonjs';
 import gzipPlugin from 'rollup-plugin-gzip';
 import hash from '../.node/RollupHashPlugin';
@@ -23,6 +24,7 @@ const rollupJS = async (inputOptions = {}, outputOptions = {}, babelOptions = {}
 				babel(babelOptions),
 				resolve(),
 				postcss(),
+				svg(),
 				commonjs(),
 				Config.versionManifest !== false && hash(Config.versionManifest),
 				isProd() && cleanup({}),
